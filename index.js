@@ -82,7 +82,6 @@ class GameManager {
   }
 }
 
-// Adventure Game Data
 const adventureScenes = {
   start: {
     text: "You enter a dark forest. You hear a strange noise coming from the bushes. What do you do?",
@@ -106,8 +105,238 @@ const adventureScenes = {
       { text: "Scream for help", next: "scream" }
     ]
   },
-  // Add more scenes as needed
+  call: {
+    text: "You call out 'Hello? Is anyone there?' A friendly-looking woodsman emerges from the trees.",
+    choices: [
+      { text: "Ask for directions", next: "ask_directions" },
+      { text: "Ask about the noise", next: "ask_noise" },
+      { text: "Continue on your own", next: "continue_alone" }
+    ]
+  },
+  help_animal: {
+    text: "You gently tend to the animal's wounds. As you help it, the animal suddenly transforms into a forest spirit!",
+    choices: [
+      { text: "Ask for its blessing", next: "ask_blessing" },
+      { text: "Ask about the forest", next: "ask_forest" },
+      { text: "Continue your journey", next: "blessed_continue" }
+    ]
+  },
+  continue_forest: {
+    text: "You leave the animal behind and continue deeper into the forest. The path splits in two directions.",
+    choices: [
+      { text: "Take the left path", next: "left_path" },
+      { text: "Take the right path", next: "right_path" },
+      { text: "Go off the path entirely", next: "off_path" }
+    ]
+  },
+  talk_figure: {
+    text: "The figure lowers its hood, revealing an ancient wizard. 'I've been expecting you, traveler.'",
+    choices: [
+      { text: "Ask what he means", next: "wizard_expect" },
+      { text: "Ask for help", next: "wizard_help" },
+      { text: "Be cautious and back away", next: "wizard_cautious" }
+    ]
+  },
+  scream: {
+    text: "Your scream echoes through the forest. Suddenly, several forest guardians appear, surrounding you!",
+    choices: [
+      { text: "Explain yourself", next: "explain_guardians" },
+      { text: "Try to fight", next: "fight_guardians" },
+      { text: "Run away", next: "run_guardians" }
+    ]
+  },
+  ask_directions: {
+    text: "The woodsman points you toward an ancient temple. 'But beware,' he warns, 'the temple holds both great treasure and great danger.'",
+    choices: [
+      { text: "Head to the temple", next: "go_temple" },
+      { text: "Ask about the danger", next: "ask_danger" },
+      { text: "Choose a different path", next: "different_path" }
+    ]
+  },
+  ask_noise: {
+    text: "'That noise?' the woodsman laughs. 'Just the forest spirits playing. They're harmless unless provoked.'",
+    choices: [
+      { text: "Ask to meet the spirits", next: "meet_spirits" },
+      { text: "Continue your journey", next: "woodsman_continue" },
+      { text: "Ask about local legends", next: "ask_legends" }
+    ]
+  },
+  continue_alone: {
+    text: "You thank the woodsman and continue alone. You soon come across a mysterious glowing pond.",
+    choices: [
+      { text: "Drink from the pond", next: "drink_pond" },
+      { text: "Swim in the pond", next: "swim_pond" },
+      { text: "Avoid the pond", next: "avoid_pond" }
+    ]
+  },
+  ask_blessing: {
+    text: "The forest spirit grants you a blessing of enhanced senses. 'Use this gift wisely,' it says before vanishing.",
+    choices: [
+      { text: "Test your new senses", next: "test_senses" },
+      { text: "Continue exploring", next: "blessed_explore" }
+    ]
+  },
+  ask_forest: {
+    text: "The spirit reveals: 'This forest is ancient and magical. Follow the fireflies to find what you seek.'",
+    choices: [
+      { text: "Follow the fireflies", next: "follow_fireflies" },
+      { text: "Ask what you seek", next: "ask_seek" }
+    ]
+  },
+  blessed_continue: {
+    text: "With the spirit's gratitude, you feel lighter and more confident. The forest seems less intimidating now.",
+    choices: [
+      { text: "Explore a cave", next: "explore_cave" },
+      { text: "Climb a tall tree", next: "climb_tree" },
+      { text: "Follow a river", next: "follow_river" }
+    ]
+  },
+  left_path: {
+    text: "The left path leads to a beautiful meadow filled with exotic flowers and butterflies.",
+    choices: [
+      { text: "Rest in the meadow", next: "rest_meadow" },
+      { text: "Pick some flowers", next: "pick_flowers" },
+      { text: "Continue through", next: "through_meadow" }
+    ]
+  },
+  right_path: {
+    text: "The right path becomes steep and rocky. You find yourself climbing a small mountain.",
+    choices: [
+      { text: "Continue climbing", next: "continue_climb" },
+      { text: "Look for another way", next: "find_other_way" },
+      { text: "Rest and enjoy the view", next: "enjoy_view" }
+    ]
+  },
+  off_path: {
+    text: "Going off the path, you discover a hidden grove with a ancient stone circle.",
+    choices: [
+      { text: "Enter the stone circle", next: "enter_circle" },
+      { text: "Study the carvings", next: "study_carvings" },
+      { text: "Leave it alone", next: "leave_circle" }
+    ]
+  },
+  wizard_expect: {
+    text: "'The stars foretold your arrival,' the wizard explains. 'You are the one who can restore balance to this forest.'",
+    choices: [
+      { text: "Accept the quest", next: "accept_quest" },
+      { text: "Ask for more information", next: "more_info" },
+      { text: "Decline and leave", next: "decline_quest" }
+    ]
+  },
+  wizard_help: {
+    text: "The wizard offers you a choice of magical items to aid your journey.",
+    choices: [
+      { text: "Take the glowing orb", next: "take_orb" },
+      { text: "Take the enchanted cloak", next: "take_cloak" },
+      { text: "Take the ancient map", next: "take_map" }
+    ]
+  },
+  // ... and many more scenes continue below
+  explain_guardians: {
+    text: "You explain you meant no harm. The guardians lower their weapons. 'The forest is dangerous at night. Let us guide you.'",
+    choices: [
+      { text: "Accept their guidance", next: "accept_guidance" },
+      { text: "Politely decline", next: "decline_guidance" }
+    ]
+  },
+  fight_guardians: {
+    text: "You attempt to fight but are quickly subdued. The guardians take you to their village for judgment.",
+    choices: [
+      { text: "Plead your case", next: "plead_case" },
+      { text: "Try to escape", next: "try_escape" }
+    ]
+  },
+  run_guardians: {
+    text: "You manage to escape the guardians but find yourself lost in an unfamiliar part of the forest.",
+    choices: [
+      { text: "Look for landmarks", next: "find_landmarks" },
+      { text: "Follow animal tracks", next: "follow_tracks" },
+      { text: "Climb a tree for perspective", next: "climb_perspective" }
+    ]
+  },
+  go_temple: {
+    text: "You arrive at the ancient temple. The entrance is sealed with mysterious runes.",
+    choices: [
+      { text: "Try to decipher the runes", next: "decipher_runes" },
+      { text: "Look for another entrance", next: "find_entrance" },
+      { text: "Call out to see if anyone's inside", next: "call_temple" }
+    ]
+  },
+  ask_danger: {
+    text: "'The temple is guarded by ancient magic,' the woodsman explains. 'Many have entered, few have returned.'",
+    choices: [
+      { text: "Risk it for the treasure", next: "risk_temple" },
+      { text: "Ask about safer adventures", next: "safer_adventure" }
+    ]
+  },
+  // Adding some endings and special scenes
+  accept_quest: {
+    text: "You accept the wizard's quest. He gives you a magical compass that points toward your destiny. **QUEST STARTED: Restore the Forest's Balance**",
+    choices: [
+      { text: "Follow the compass", next: "follow_compass" },
+      { text: "Prepare supplies first", next: "prepare_supplies" }
+    ]
+  },
+  take_orb: {
+    text: "The orb glows with inner light. 'This will light your way in dark places,' the wizard says.",
+    choices: [
+      { text: "Test the orb's light", next: "test_orb" },
+      { text: "Continue your journey", next: "orb_continue" }
+    ]
+  },
+  enter_circle: {
+    text: "As you step into the stone circle, time seems to slow down. Visions of the forest's past flood your mind.",
+    choices: [
+      { text: "Watch the visions", next: "watch_visions" },
+      { text: "Try to leave the circle", next: "leave_vision" }
+    ]
+  },
+  // Some conclusion scenes
+  complete_quest: {
+    text: "🎉 **QUEST COMPLETE!** You have restored balance to the forest! The trees glow with renewed energy and animals gather to thank you. You return home a hero, forever changed by your adventure.",
+    choices: [
+      { text: "Start New Adventure", next: "start" },
+      { text: "Take a Rest", next: "quest_complete" }
+    ]
+  },
+  treasure_end: {
+    text: "💰 **TREASURE FOUND!** You discover the ancient treasure of the forest temple! You're now wealthy beyond your dreams and have amazing stories to tell for generations.",
+    choices: [
+      { text: "Start New Adventure", next: "start" },
+      { text: "Retire Rich", next: "treasure_complete" }
+    ]
+  },
+  peaceful_end: {
+    text: "☮️ **PEACEFUL CONCLUSION** You decide to live in harmony with the forest, learning its secrets and becoming its guardian. You find true happiness in the simple, magical life.",
+    choices: [
+      { text: "Start New Adventure", next: "start" },
+      { text: "Remain in Peace", next: "peace_complete" }
+    ]
+  },
+  // Final completion states (no further choices)
+  quest_complete: {
+    text: "Your legend grows as travelers speak of the hero who saved the forest. You've achieved your destiny!",
+    choices: []
+  },
+  treasure_complete: {
+    text: "You build a magnificent estate at the forest's edge, always remembering the adventure that made it possible.",
+    choices: []
+  },
+  peace_complete: {
+    text: "Years pass, and you become known as the wise forest dweller, content with your chosen life of magic and nature.",
+    choices: []
+  }
 };
+
+// Add this function to handle the expanded adventure system
+function getAdventureScene(sceneKey) {
+  return adventureScenes[sceneKey] || {
+    text: "Your adventure continues... (More content coming soon!)",
+    choices: [
+      { text: "Return to Start", next: "start" }
+    ]
+  };
+}
 
 // Initialize game manager
 const gameManager = new GameManager();
@@ -292,29 +521,40 @@ client.on(Events.InteractionCreate, async (interaction) => {
       await interaction.channel.send({ embeds: [embed], components: [row] });
     }
 
-    // Adventure game choices
-    else if (interaction.customId.startsWith('adv_')) {
-      const sceneKey = interaction.customId.replace('adv_', '');
-      const scene = adventureScenes[sceneKey];
-      
-      if (scene) {
-        const embed = createEmbed("🏰 Adventure Game", scene.text, 0x00FF00);
-        
-        const row = new ActionRowBuilder();
-        scene.choices.forEach(choice => {
-          row.addComponents(
-            new ButtonBuilder()
-              .setCustomId(`adv_${choice.next}`)
-              .setLabel(choice.text)
-              .setStyle(ButtonStyle.Primary)
-          );
-        });
+    // In your button interaction handler, replace the adventure game section with:
+else if (interaction.customId.startsWith('adv_')) {
+  const sceneKey = interaction.customId.replace('adv_', '');
+  const scene = getAdventureScene(sceneKey);
+  
+  const embed = createEmbed("🏰 Adventure Game", scene.text, 0x00FF00);
+  
+  if (scene.choices && scene.choices.length > 0) {
+    const row = new ActionRowBuilder();
+    scene.choices.forEach(choice => {
+      row.addComponents(
+        new ButtonBuilder()
+          .setCustomId(`adv_${choice.next}`)
+          .setLabel(choice.text)
+          .setStyle(ButtonStyle.Primary)
+      );
+    });
+    await interaction.editReply({ embeds: [embed], components: [row] });
+  } else {
+    // This is an ending with no further choices
+    await interaction.editReply({ 
+      embeds: [embed],
+      components: [
+        new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
+            .setCustomId('adv_start')
+            .setLabel('Start New Adventure')
+            .setStyle(ButtonStyle.Success)
+        )
+      ]
+    });
+  }
+}
 
-        await interaction.editReply({ embeds: [embed], components: [row] });
-      } else {
-        await interaction.editReply({ content: "Your adventure continues... (More scenes coming soon!)" });
-      }
-    }
 
     // Help
     else if (interaction.customId === 'show_help') {
